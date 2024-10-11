@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, EventEmitter, inject, Output} from '@angular/core';
 import { AbstractControl, FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
 import {EmployeeService} from "../service/employee.service";
 import { Router, RouterLink } from "@angular/router";
@@ -12,6 +12,7 @@ import {Employee} from "../model/employee";
     imports: [RouterLink, ReactiveFormsModule]
 })
 export class EmployeeComponent {
+  @Output() fireSave: EventEmitter<Employee> = new EventEmitter();
   private builder: FormBuilder = inject(FormBuilder);
   private employeeService: EmployeeService = inject(EmployeeService);
   private router: Router = inject(Router);
